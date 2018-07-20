@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDMMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <header> <trackingId>7b302855-cfba-4b2c-9255-9aa925e8ac11</trackingId>
+    <msgClass>PUBLISH</msgClass>
+    <msgName>FlowControl</msgName>
+    <owner>CDM</owner>
+    <sender>ATRS_DEV</sender>
+    <version>2.0</version>
+    <timestamp>2011-10-10T02:45:17</timestamp>
+  </header>
+  <message>
+    <flowControls>
+      <flowControl flowId="4417" remark="" reason="流控" endTime="2011-10-10T02:45:15" startTime="2011-10-10T01:34:00" interval="0分钟/架次" controlPoint="ZSQZ" enabledFlag="Y"/>
+    </flowControls>
+  </message>
+</CDMMessage>

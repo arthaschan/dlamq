@@ -1,0 +1,54 @@
+CREATE OR REPLACE PROCEDURE PRO_DL_MSG_2_BACK IS
+tmpVar NUMBER;
+now date;
+/******************************************************************************
+   NAME:       PRO_DL_MSG_2_BACK
+   PURPOSE:    
+
+   REVISIONS:
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  ------------------------------------
+   1.0        2018/4/17   Arthas       1. 将T_CDM_DL_MSG 的1天前的数据备份到历史表
+
+******************************************************************************/
+BEGIN
+   tmpVar := 0;
+   
+   now:=SYSDATE-1;
+   INSERT INTO T_CDM_DL_MSG_HIS
+   SELECT * FROM T_CDM_DL_MSG T
+   WHERE T.FCREATETIME<now;
+   DELETE FROM T_CDM_DL_MSG
+   where FCREATETIME<now;
+   
+   EXCEPTION
+     WHEN NO_DATA_FOUND THEN
+       NULL;
+     WHEN OTHERS THEN
+       -- Consider logging the error and then re-raise
+       RAISE;
+END PRO_DL_MSG_2_BACK;
+
+
+
+/
+BEGIN
+  SYS.DBMS_JOB.REMOVE(63);
+COMMIT;
+END;
+/
+
+DECLARE
+  X NUMBER;
+BEGIN
+  SYS.DBMS_JOB.SUBMIT
+  ( job       => X
+   ,what      => 'CDM.PRO_DL_MSG_2_BACK;'
+   ,next_date => to_date('18/04/2018 00:10:00','dd/mm/yyyy hh24:mi:ss')
+   ,interval  => 'TRUNC(SYSDATE+1)'
+   ,no_parse  => FALSE
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Job Number is: ' || to_char(x));
+COMMIT;
+END;
+/

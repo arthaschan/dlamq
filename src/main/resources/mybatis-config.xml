@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="DlMsg" type="com.szatc.ibatis.entity.DlMsg"/>
+        <typeAlias alias="DlFlightInfo" type="com.szatc.ibatis.entity.DlFlightInfo"/>
+        <typeAlias alias="DlAirline" type="com.szatc.ibatis.entity.DlAirline"/>
+        <typeAlias alias="FlightInfo" type="com.szatc.ibatis.entity.FlightInfo"/>
+        <typeAlias alias="DepOrder" type="com.szatc.ibatis.entity.DepOrder"/>
+    </typeAliases>
+</configuration>

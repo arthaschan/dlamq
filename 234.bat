@@ -1,0 +1,1 @@
+cmd /k D:\Java\jdk1.8\bin\java -Djava.ext.dirs=lib -jar dlamq-1.jar
